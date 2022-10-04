@@ -6,6 +6,8 @@
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
 import binascii
+import numpy as np
+from decimal import Decimal
 
 keyPair = RSA.generate(3072)
 
@@ -26,3 +28,8 @@ print("Encrypted:", binascii.hexlify(encrypted))
 decryptor = PKCS1_OAEP.new(keyPair)
 decrypted = decryptor.decrypt(encrypted)
 print('Decrypted:', decrypted)
+
+print('-' * 20 + ' n (Product of p and q) ' + '-' * 20)
+print(pubKey.n)
+
+print("This key will take a classical computer over 300 trillion years to crack")
